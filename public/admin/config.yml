@@ -1,0 +1,32 @@
+backend:
+  name: github
+  repo: marroquininge/diana-travel
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: destinos
+    label: Destinos
+    folder: content/destinos
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Nombre, name: nombre, widget: string }
+      - { label: Descripción, name: descripcion, widget: text }
+      - { label: Imagen, name: img, widget: image }
+      - { label: Tipo, name: tipo, widget: select, options: [nacional, internacional] }
+      - label: El paquete incluye
+        name: incluye
+        widget: list
+        field: { label: Item, name: item, widget: string }
+
+  - name: paquetes
+    label: Paquetes destacados
+    folder: content/paquetes
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Destino, name: destino, widget: string }
+      - { label: Detalle, name: detalle, widget: string }

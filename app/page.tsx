@@ -20,7 +20,7 @@ const imagenes: Record<string, string> = {
 };
 
 async function getDestino(slug: string) {
-  const res = await fetch(SHEET_URL, { next: { revalidate: 60 } });
+  const res = await fetch(SHEET_URL, { cache: "no-store" });
   const text = await res.text();
   const rows = text.split("\n").slice(1);
   for (const row of rows) {

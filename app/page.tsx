@@ -39,7 +39,7 @@ export default function Home() {
         </p>
         <div className="flex gap-3 justify-center flex-wrap">
           <a href="#contacto" className="bg-white text-red-600 font-semibold px-6 py-3 rounded-full hover:bg-red-50 transition">
-            Cotizar mi viaje
+            Planea tu viaje ahora ✈
           </a>
           <a href="https://wa.me/573186624920" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition">
             WhatsApp directo

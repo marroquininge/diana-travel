@@ -1,105 +1,159 @@
 import Image from "next/image";
 import Link from "next/link";
-import FormularioCotizacion from "../../components/FormularioCotizacion";
+import FormularioCotizacion from "./components/FormularioCotizacion";
 
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTj8U1DfTHLAGQGO9nSOQqZbMq-aKYElrdRYLiZJcKb9HmsLGkvPlTSTSd1zgmT1X_kg0svUGZZUCbO/pub?gid=0&single=true&output=csv";
+const destinos = [
+  { nombre: "Amazonas", slug: "amazonas", img: "/images/amazonas3.jpeg", tipo: "nacional" },
+  { nombre: "La Guajira", slug: "la-guajira", img: "/images/guajira1.png", tipo: "nacional" },
+  { nombre: "San Andrés", slug: "san-andres", img: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=400&q=80", tipo: "nacional" },
+  { nombre: "Santa Marta", slug: "santa-marta", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", tipo: "nacional" },
+  { nombre: "Girardot", slug: "girardot", img: "https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?w=400&q=80", tipo: "nacional" },
+  { nombre: "Coveñas", slug: "covenas", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", tipo: "nacional" },
+  { nombre: "Eje Cafetero", slug: "eje-cafetero", img: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=400&q=80", tipo: "nacional" },
+  { nombre: "Europa", slug: "europa", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&q=80", tipo: "internacional" },
+  { nombre: "Cancún", slug: "cancun", img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=400&q=80", tipo: "internacional" },
+  { nombre: "Punta Cana", slug: "punta-cana", img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=400&q=80", tipo: "internacional" },
+  { nombre: "Panamá", slug: "panama", img: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=80", tipo: "internacional" },
+];
 
-const imagenes: Record<string, string> = {
-  amazonas: "https://images.unsplash.com/photo-1518182170546-07661fd94144?w=800&q=80",
-  cartagena: "https://images.unsplash.com/photo-1583997052103-b4a1cb974ce5?w=800&q=80",
-  "la-guajira": "https://images.unsplash.com/photo-1596386461350-326ccb383e9f?w=800&q=80",
-  "san-andres": "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
-  "santa-marta": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-  girardot: "https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?w=800&q=80",
-  "eje-cafetero": "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=800&q=80",
-  europa: "https://images.unsplash.com/photo-1499856871958-5b9357976b82?w=800&q=80",
-  cancun: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=800&q=80",
-  "punta-cana": "https://images.unsplash.com/photo-1580541832626-2a7131ee809f?w=800&q=80",
-  panama: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&q=80",
-  ecuador: "https://images.unsplash.com/photo-1531968455001-5c5272a41129?w=800&q=80",
-};
+const paquetes = [
+  { destino: "Amazonas", detalle: "Tiquetes + hotel + traslados · hotel propio" },
+  { destino: "La Guajira", detalle: "Tiquetes + hotel + traslados · hotel propio" },
+  { destino: "Santa Marta", detalle: "Tiquetes + hotel + traslados · hotel propio" },
+  { destino: "San Andrés", detalle: "Tiquetes + hotel + traslados · hotel propio" },
+];
 
-async function getDestino(slug: string) {
-  const res = await fetch(SHEET_URL, { cache: "no-store" });
-  const text = await res.text();
-  const rows = text.split("\n").slice(1);
-  for (const row of rows) {
-    const cols = row.split(",");
-    if (cols[0]?.trim() === slug) {
-      return {
-        slug: cols[0]?.trim(),
-        nombre: cols[1]?.trim(),
-        descripcion: cols[2]?.trim(),
-        tipo: cols[3]?.trim(),
-        incluye: cols[4]?.trim().split("|"),
-        img: imagenes[slug] || "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-      };
-    }
-  }
-  return null;
-}
-
-export default async function DestinoPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const destino = await getDestino(slug);
-
-  if (!destino) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center text-center px-6">
-        <p className="text-5xl mb-4">🌍</p>
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">Destino no encontrado</h1>
-        <p className="text-gray-500 mb-6">El destino que buscas no existe o fue removido.</p>
-        <Link href="/" className="bg-red-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-700 transition">
-          Volver al inicio
-        </Link>
-      </div>
-    );
-  }
-
+export default function Home() {
   return (
     <main className="min-h-screen bg-white font-sans">
 
-      <div className="bg-red-600 py-4 px-6">
-        <Link href="/" className="text-white text-sm opacity-80 hover:opacity-100 transition">
-          ← Volver al inicio
-        </Link>
-      </div>
-
-      <div className="relative h-64 sm:h-96 w-full">
-        <Image src={destino.img} alt={destino.nombre} fill className="object-cover" />
-        <div className="absolute inset-0 bg-black/40 flex items-end p-6">
-          <h1 className="text-white text-4xl font-bold">{destino.nombre}</h1>
+      {/* HERO */}
+      <section className="bg-red-600 text-white text-center py-12 px-6">
+        <p className="text-yellow-300 font-semibold text-lg tracking-wide mb-1">☀ on vacation</p>
+        <p className="text-sm opacity-80 mb-6">Asesora autorizada · Cali, Colombia</p>
+        <h1 className="text-3xl font-bold leading-tight mb-3">
+          Viaja con quien conoce<br />cada destino
+        </h1>
+        <p className="text-base opacity-90 mb-8">
+          Diana Ramírez te acompaña desde la cotización hasta tu regreso
+        </p>
+        <div className="flex gap-3 justify-center flex-wrap">
+          <a href="#contacto" className="bg-white text-red-600 font-semibold px-6 py-3 rounded-full hover:bg-red-50 transition">
+            Cotizar mi viaje
+          </a>
+          <a href="https://wa.me/573186624920" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition">
+            WhatsApp directo
+          </a>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 gap-10">
+      {/* NAV */}
+      <nav className="sticky top-0 bg-white border-b border-gray-100 z-10">
+        <div className="max-w-4xl mx-auto flex gap-6 justify-center py-3 text-sm text-gray-500">
+          <a href="#destinos" className="hover:text-red-600 transition">Destinos</a>
+          <a href="#paquetes" className="hover:text-red-600 transition">Paquetes</a>
+          <a href="#asesora" className="hover:text-red-600 transition">Quién soy</a>
+          <a href="#contacto" className="hover:text-red-600 transition">Contacto</a>
+        </div>
+      </nav>
 
-        <div>
-          <p className="text-gray-600 leading-relaxed mb-6">{destino.descripcion}</p>
+      {/* DESTINOS */}
+      <section id="destinos" className="max-w-4xl mx-auto px-6 py-12">
+        <h2 className="text-2xl font-bold text-gray-800 mb-1">Destinos disponibles</h2>
+        <p className="text-gray-500 text-sm mb-6">Colombia y el mundo, al mejor precio</p>
 
-          <div className="bg-gray-50 rounded-2xl p-5 mb-6">
-            <p className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-3">El paquete incluye</p>
-            <ul className="flex flex-col gap-2">
-              {destino.incluye.map((item: string) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                  <span className="text-green-500 font-bold">✓</span> {item}
-                </li>
-              ))}
-            </ul>
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Colombia</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+          {destinos.filter(d => d.tipo === "nacional").map((d) => (
+            <Link href={`/destinos/${d.slug}`} key={d.nombre}>
+              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <div className="relative h-24 w-full">
+                  <Image src={d.img} alt={d.nombre} fill className="object-cover" />
+                </div>
+                <p className="text-center text-sm font-medium py-2 text-gray-700">{d.nombre}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Internacional</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {destinos.filter(d => d.tipo === "internacional").map((d) => (
+            <Link href={`/destinos/${d.slug}`} key={d.nombre}>
+              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
+                <div className="relative h-24 w-full">
+                  <Image src={d.img} alt={d.nombre} fill className="object-cover" />
+                </div>
+                <p className="text-center text-sm font-medium py-2 text-gray-700">{d.nombre}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* PAQUETES */}
+      <section id="paquetes" className="bg-gray-50 py-12 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">Paquetes destacados</h2>
+          <p className="text-gray-500 text-sm mb-6">Todo incluido · Salidas desde Cali</p>
+          <div className="flex flex-col gap-4">
+            {paquetes.map((p) => (
+              <div key={p.destino} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex justify-between items-center">
+                <div>
+                  <p className="font-semibold text-gray-800">{p.destino}</p>
+                  <p className="text-sm text-gray-500">{p.detalle}</p>
+                </div>
+                <a href="#contacto" className="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-red-700 transition">
+                  Cotizar
+                </a>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="bg-red-50 border border-red-100 rounded-2xl p-4 text-center">
-            <p className="text-red-600 font-semibold text-sm">Precios personalizados según fecha y grupo</p>
-            <p className="text-gray-500 text-xs mt-1">Cotiza gratis · Diana te responde en menos de 2 horas</p>
+      {/* ASESORA */}
+      <section id="asesora" className="max-w-4xl mx-auto px-6 py-12">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">Tu asesora</h2>
+        <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 flex gap-5 items-center">
+          <div className="flex-shrink-0">
+            <Image
+              src="/foto_diana.jpeg"
+              alt="Diana Ramírez Losada"
+              width={80}
+              height={80}
+              className="rounded-full object-cover w-20 h-20"
+            />
+          </div>
+          <div>
+            <p className="font-bold text-gray-800 text-lg">Diana Ramírez Losada</p>
+            <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+              Asesora autorizada On Vacation con años de experiencia ayudando a familias y empresas a viajar sin estrés desde Cali, Bogotá, Medellín, Pereira y Bucaramanga.
+            </p>
+            <p className="text-sm text-gray-500 mt-1">📞 <a href="tel:+573186624920" className="hover:text-red-600 transition">318 662 4920</a></p>
+            <span className="inline-block mt-2 bg-red-50 text-red-600 text-xs font-semibold px-3 py-1 rounded-full">
+              Asesora autorizada On Vacation
+            </span>
           </div>
         </div>
+      </section>
 
-        <div>
-          <p className="text-lg font-bold text-gray-800 mb-4">Cotiza este destino</p>
-          <FormularioCotizacion />
+      {/* CONTACTO */}
+      <section id="contacto" className="bg-gray-50 py-12 px-6">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">Cotiza tu viaje</h2>
+          <p className="text-gray-500 text-sm mb-6">Gratis y sin compromiso. Diana te responde en menos de 2 horas.</p>
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+            <FormularioCotizacion />
+          </div>
         </div>
+      </section>
 
-      </div>
+      {/* FOOTER */}
+      <footer className="text-center text-xs text-gray-400 py-6 border-t border-gray-100">
+        © 2025 · Diana Ramírez Losada · Asesora autorizada On Vacation · Cali, Colombia
+      </footer>
+
     </main>
   );
 }

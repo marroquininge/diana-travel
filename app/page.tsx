@@ -47,6 +47,22 @@ export default function Home() {
         </div>
       </section>
 
+{/* PROMOCIONES */}
+      <section className="bg-yellow-400 py-4 px-6">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🔥</span>
+            <div>
+              <p className="font-bold text-gray-900 text-sm">¡Promoción especial!</p>
+              <p className="text-gray-800 text-sm">Consulta nuestras promociones especiales · Cupos limitados</p>
+            </div>
+          </div>
+          <a href="#contacto" className="bg-gray-900 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-gray-700 transition whitespace-nowrap">
+            Aprovechar oferta
+          </a>
+        </div>
+      </section>
+
       {/* NAV */}
       <nav className="sticky top-0 bg-white border-b border-gray-100 z-10">
         <div className="max-w-4xl mx-auto flex gap-6 justify-center py-3 text-sm text-gray-500">

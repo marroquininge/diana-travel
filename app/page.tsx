@@ -49,23 +49,29 @@ export default function Home() {
 
 {/* PROMOCIONES */}
       <section className="max-w-4xl mx-auto px-6 py-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">🔥 Promoción especial</h2>
-        <div className="rounded-2xl overflow-hidden shadow-md">
-          <Image
-            src="/images/promocion.jpg"
-            alt="Mega Paquete On Vacation"
-            width={1200}
-            height={1600}
-            className="w-full h-auto"
-          />
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">🔥 Promociones especiales</h2>
+        <p className="text-gray-500 text-sm mb-6">Mega Paquetes On Vacation · Cupos limitados</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div className="rounded-2xl overflow-hidden shadow-md">
+            <Image src="/images/promo_amazonas.jpeg" alt="Promo Amazonas" width={800} height={1200} className="w-full h-auto" />
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-md">
+            <Image src="/images/promo_sanandres.jpeg" alt="Promo San Andrés" width={800} height={1200} className="w-full h-auto" />
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-md">
+            <Image src="/images/promo_riohacha.jpeg" alt="Promo Riohacha" width={800} height={1200} className="w-full h-auto" />
+          </div>
+          <div className="rounded-2xl overflow-hidden shadow-md">
+            <Image src="/images/promo_santamarta.jpeg" alt="Promo Santa Marta" width={800} height={1200} className="w-full h-auto" />
+          </div>
         </div>
-        <div className="mt-4 text-center">
+        <div className="text-center">
           <a href="#contacto" className="bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition inline-block">
             ¡Quiero este paquete! ✈
           </a>
         </div>
       </section>
-      
+            
       {/* NAV */}
       <nav className="sticky top-0 bg-white border-b border-gray-100 z-10">
         <div className="max-w-4xl mx-auto flex gap-6 justify-center py-3 text-sm text-gray-500">

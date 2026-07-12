@@ -51,18 +51,12 @@ export default function Home() {
       <section className="max-w-4xl mx-auto px-6 py-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">🔥 Promociones especiales</h2>
         <p className="text-gray-500 text-sm mb-6">Mega Paquetes On Vacation · Cupos limitados</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div className="flex flex-col gap-4 mb-6">
           <div className="rounded-2xl overflow-hidden shadow-md">
-            <Image src="/images/promo_amazonas.jpeg" alt="Promo Amazonas" width={800} height={1200} className="w-full h-auto" />
+            <Image src="/images/destinos_imperdibles.jpeg" alt="Destinos Imperdibles 2026-2027" width={1200} height={1200} className="w-full h-auto" />
           </div>
           <div className="rounded-2xl overflow-hidden shadow-md">
-            <Image src="/images/promo_sanandres.jpeg" alt="Promo San Andrés" width={800} height={1200} className="w-full h-auto" />
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-md">
-            <Image src="/images/promo_riohacha.jpeg" alt="Promo Riohacha" width={800} height={1200} className="w-full h-auto" />
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-md">
-            <Image src="/images/promo_santamarta.jpeg" alt="Promo Santa Marta" width={800} height={1200} className="w-full h-auto" />
+            <Image src="/images/cyber_on.jpeg" alt="Cyber ON Promo Paquetes" width={800} height={1600} className="w-full h-auto" />
           </div>
         </div>
         <div className="text-center">
@@ -140,20 +134,17 @@ export default function Home() {
       {/* ASESORA */}
       <section id="asesora" className="max-w-4xl mx-auto px-6 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Tu asesora</h2>
+        <div className="rounded-2xl overflow-hidden shadow-md mb-4">
+          <Image src="/images/flayer_diana.jpeg" alt="Diana Ramírez - Asesora On Vacation" width={1200} height={1600} className="w-full h-auto" />
+        </div>
         <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 flex gap-5 items-center">
           <div className="flex-shrink-0">
-            <Image
-              src="/foto_diana.jpeg"
-              alt="Diana Ramírez Losada"
-              width={80}
-              height={80}
-              className="rounded-full object-cover w-20 h-20"
-            />
+            <Image src="/foto_diana.jpeg" alt="Diana Ramírez Losada" width={80} height={80} className="rounded-full object-cover w-20 h-20" />
           </div>
           <div>
             <p className="font-bold text-gray-800 text-lg">Diana Ramírez Losada</p>
             <p className="text-sm text-gray-500 mt-1 leading-relaxed">
-              Asesora autorizada On Vacation con años de experiencia ayudando a familias y empresas a viajar sin estrés desde Cali, Bogotá, Medellín, Pereira y Bucaramanga.
+              Asesora autorizada On Vacation con más de 10 años de experiencia ayudando a familias y empresas a viajar sin estrés desde Cali, Bogotá, Medellín, Pereira y Bucaramanga.
             </p>
             <p className="text-sm text-gray-500 mt-1">📞 <a href="tel:+573186624920" className="hover:text-red-600 transition">318 662 4920</a></p>
             <span className="inline-block mt-2 bg-red-50 text-red-600 text-xs font-semibold px-3 py-1 rounded-full">

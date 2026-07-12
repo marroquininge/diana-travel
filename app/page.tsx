@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import FormularioCotizacion from "./components/FormularioCotizacion";
+import Promociones from "./components/Promociones";
+export const revalidate = 0;
 
 const destinos = [
   { nombre: "Amazonas", slug: "amazonas", img: "/images/amazonas3.jpeg", tipo: "nacional" },
@@ -48,23 +50,7 @@ export default function Home() {
       </section>
 
 {/* PROMOCIONES */}
-      <section className="max-w-4xl mx-auto px-6 py-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-2">🔥 Promociones especiales</h2>
-        <p className="text-gray-500 text-sm mb-6">Mega Paquetes On Vacation · Cupos limitados</p>
-        <div className="flex flex-col gap-4 mb-6">
-          <div className="rounded-2xl overflow-hidden shadow-md">
-            <Image src="/images/destinos_imperdibles.jpeg" alt="Destinos Imperdibles 2026-2027" width={1200} height={1200} className="w-full h-auto" />
-          </div>
-          <div className="rounded-2xl overflow-hidden shadow-md">
-            <Image src="/images/cyber_on.jpeg" alt="Cyber ON Promo Paquetes" width={800} height={1600} className="w-full h-auto" />
-          </div>
-        </div>
-        <div className="text-center">
-          <a href="#contacto" className="bg-red-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-red-700 transition inline-block">
-            ¡Quiero este paquete! ✈
-          </a>
-        </div>
-      </section>
+      <Promociones />
             
       {/* NAV */}
       <nav className="sticky top-0 bg-white border-b border-gray-100 z-10">

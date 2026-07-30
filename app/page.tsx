@@ -49,6 +49,26 @@ export default function Home() {
         </div>
       </section>
 
+{/* EXPERIENCIAS */}
+      <section className="bg-gray-50 py-12 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-800 mb-1">✈ Experiencias de Diana</h2>
+          <p className="text-gray-500 text-sm mb-6">Destinos que he visitado y te recomiendo con el corazón</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link href="/experiencias/amazonas">
+              <div className="relative h-48 rounded-2xl overflow-hidden cursor-pointer group">
+                <Image src="/images/diana_amazonas1.jpeg" alt="Amazonas" fill className="object-cover group-hover:scale-105 transition duration-300" />
+                <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
+                  <p className="text-yellow-300 text-xs font-semibold">✈ Experiencia de Diana</p>
+                  <p className="text-white text-xl font-bold">Amazonas</p>
+                  <p className="text-white text-xs opacity-80">"El Amazonas me cambió para siempre"</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
 {/* PROMOCIONES */}
       <Promociones />
             

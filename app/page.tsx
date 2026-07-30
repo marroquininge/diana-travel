@@ -57,7 +57,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Link href="/experiencias/amazonas">
               <div className="relative h-48 rounded-2xl overflow-hidden cursor-pointer group">
-                <Image src="/images/diana_amazonas1.jpeg" alt="Amazonas" fill className="object-cover group-hover:scale-105 transition duration-300" />
+                <Image src="/images/amazonas3.jpeg" alt="Amazonas" fill className="object-cover group-hover:scale-105 transition duration-300" />
                 <div className="absolute inset-0 bg-black/40 flex flex-col justify-end p-4">
                   <p className="text-yellow-300 text-xs font-semibold">✈ Experiencia de Diana</p>
                   <p className="text-white text-xl font-bold">Amazonas</p>

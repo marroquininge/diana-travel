@@ -2,20 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import FormularioCotizacion from "./components/FormularioCotizacion";
 import Promociones from "./components/Promociones";
-export const revalidate = 0;
 
 const destinos = [
-  { nombre: "Amazonas", slug: "amazonas", img: "/images/amazonas3.jpeg", tipo: "nacional" },
-  { nombre: "La Guajira", slug: "la-guajira", img: "/images/guajira1.png", tipo: "nacional" },
-  { nombre: "San Andrés", slug: "san-andres", img: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=400&q=80", tipo: "nacional" },
-  { nombre: "Santa Marta", slug: "santa-marta", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", tipo: "nacional" },
-  { nombre: "Girardot", slug: "girardot", img: "https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?w=400&q=80", tipo: "nacional" },
-  { nombre: "Coveñas", slug: "covenas", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", tipo: "nacional" },
-  { nombre: "Eje Cafetero", slug: "eje-cafetero", img: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=400&q=80", tipo: "nacional" },
-  { nombre: "Europa", slug: "europa", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&q=80", tipo: "internacional" },
-  { nombre: "Cancún", slug: "cancun", img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=400&q=80", tipo: "internacional" },
-  { nombre: "Punta Cana", slug: "punta-cana", img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=400&q=80", tipo: "internacional" },
-  { nombre: "Panamá", slug: "panama", img: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=80", tipo: "internacional" },
+  { nombre: "San Andrés", slug: "san-andres", img: "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=400&q=80" },
+  { nombre: "La Guajira", slug: "la-guajira", img: "/images/guajira1.png" },
+  { nombre: "Amazonas", slug: "amazonas", img: "/images/amazonas3.jpeg" },
+  { nombre: "Santa Marta", slug: "santa-marta", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" },
+  { nombre: "Cancún", slug: "cancun", img: "https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=400&q=80" },
+  { nombre: "Punta Cana", slug: "punta-cana", img: "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=400&q=80" },
+  { nombre: "Panamá", slug: "panama", img: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=400&q=80" },
+  { nombre: "Europa", slug: "europa", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&q=80" },
+  { nombre: "Coveñas", slug: "covenas", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" },
+  { nombre: "Girardot", slug: "girardot", img: "https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?w=400&q=80" },
+  { nombre: "Eje Cafetero", slug: "eje-cafetero", img: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=400&q=80" },
 ];
 
 const paquetes = [
@@ -30,27 +29,102 @@ export default function Home() {
     <main className="min-h-screen bg-white font-sans">
 
       {/* HERO */}
-      <section className="bg-red-600 text-white text-center py-12 px-6">
-        <p className="text-yellow-300 font-semibold text-lg tracking-wide mb-1">☀ on vacation</p>
-        <p className="text-sm opacity-80 mb-6">Asesora autorizada · Cali, Colombia</p>
-        <h1 className="text-3xl font-bold leading-tight mb-3">
-          Viaja con quien conoce<br />cada destino
-        </h1>
-        <p className="text-base opacity-90 mb-8">
-          Diana Ramírez te acompaña desde la cotización hasta tu regreso
-        </p>
-        <div className="flex gap-3 justify-center flex-wrap">
-          <a href="#contacto" className="bg-white text-red-600 font-semibold px-6 py-3 rounded-full hover:bg-red-50 transition">
-            Planea tu viaje ahora ✈
-          </a>
-          <a href="https://wa.me/573186624920" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition">
-            WhatsApp directo
-          </a>
+      <section className="relative bg-[#0a1628] text-white overflow-hidden">
+        
+        {/* NAV SUPERIOR */}
+        <div className="relative z-10 flex items-center justify-between px-6 py-4 border-b border-white/10">
+          <div>
+            <p className="text-2xl font-bold italic" style={{fontFamily: 'Georgia, serif'}}>
+              <span className="text-yellow-400">Diana</span>
+              <span className="text-white">Travel</span>
+              <span className="text-yellow-400 text-lg"> ✈</span>
+            </p>
+            <p className="text-xs text-gray-300 flex items-center gap-1">
+              Asesora Oficial <span className="text-blue-400 font-semibold ml-1">On Vacation</span>
+            </p>
+          </div>
+          <nav className="hidden sm:flex gap-6 text-sm text-gray-300">
+            <a href="#destinos" className="hover:text-yellow-400 transition">Inicio</a>
+            <a href="#destinos" className="hover:text-yellow-400 transition">Destinos</a>
+            <a href="#promociones" className="hover:text-yellow-400 transition">Promociones</a>
+            <a href="#experiencias" className="hover:text-yellow-400 transition">Blog</a>
+            <a href="#contacto" className="hover:text-yellow-400 transition">Contacto</a>
+          </nav>
+          <div className="flex items-center gap-3">
+            <a href="https://www.facebook.com/diana_asesora_on_vacation" target="_blank" className="text-gray-300 hover:text-yellow-400 transition text-lg">f</a>
+            <a href="https://www.instagram.com/diana_asesora_on_vacation" target="_blank" className="text-gray-300 hover:text-yellow-400 transition text-lg">📷</a>
+            <a href="https://www.tiktok.com/@diana_asesora_on_vacation" target="_blank" className="text-gray-300 hover:text-yellow-400 transition text-lg">🎵</a>
+            <a href="https://wa.me/573186624920" target="_blank" className="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-green-600 transition flex items-center gap-1">
+              WhatsApp
+            </a>
+          </div>
         </div>
+
+        {/* CONTENIDO HERO */}
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+          
+          {/* IZQUIERDA */}
+          <div>
+            <p className="text-yellow-400 font-semibold text-sm mb-3 uppercase tracking-widest">Planeemos juntos</p>
+            <h1 className="text-5xl font-black leading-tight mb-4">
+              TU PRÓXIMO<br />
+              <span className="text-yellow-400">VIAJE</span>
+            </h1>
+            <p className="text-gray-300 text-base leading-relaxed mb-6">
+              Viaja con la tranquilidad de contar con la asesoría personalizada de <span className="text-white font-semibold">Diana Ramírez</span>, Asesora Oficial <span className="text-blue-400 font-semibold">On Vacation</span> en Cali.
+            </p>
+            <div className="flex gap-3 flex-wrap mb-6">
+              <a href="https://wa.me/573186624920" target="_blank" className="bg-green-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-green-600 transition flex items-center gap-2">
+                📱 Cotiza por WhatsApp
+              </a>
+              <a href="#destinos" className="border border-yellow-400 text-yellow-400 font-semibold px-6 py-3 rounded-full hover:bg-yellow-400 hover:text-black transition">
+                Ver Destinos →
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-yellow-400 text-lg">★★★★★</span>
+              <p className="text-gray-300 text-sm">Más de <span className="text-white font-semibold">10 años</span> haciendo realidad los sueños de viajar.</p>
+            </div>
+          </div>
+
+          {/* DERECHA — FOTO DIANA */}
+          <div className="relative flex justify-center">
+            <div className="relative w-full max-w-md">
+              <Image
+                src="/images/presentacion_diana.png"
+                alt="Diana Ramírez - Asesora On Vacation"
+                width={500}
+                height={600}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            {/* TARJETAS FLOTANTES */}
+            <div className="absolute top-4 right-0 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-3 text-xs text-center">
+              <p className="text-yellow-400 font-bold">🛡</p>
+              <p className="text-white text-xs">Respaldo<br/>On Vacation</p>
+            </div>
+            <div className="absolute bottom-4 left-0 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-3 text-xs text-center">
+              <p className="text-yellow-400 font-bold">❤</p>
+              <p className="text-white text-xs">Acompañamiento<br/>antes y después</p>
+            </div>
+          </div>
+        </div>
+
+        {/* BARRA DE SERVICIOS */}
+        <div className="relative z-10 border-t border-white/10 px-6 py-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-6 text-sm text-gray-300">
+            <span className="flex items-center gap-2">✈ Tiquetes Aéreos</span>
+            <span className="flex items-center gap-2">🏨 Hoteles</span>
+            <span className="flex items-center gap-2">🍽 Alimentación</span>
+            <span className="flex items-center gap-2">🚌 Tours y Excursiones</span>
+            <span className="flex items-center gap-2">💳 Financiación a tu medida</span>
+          </div>
+        </div>
+
       </section>
 
-{/* EXPERIENCIAS */}
-      <section className="bg-gray-50 py-12 px-6">
+      {/* EXPERIENCIAS */}
+      <section id="experiencias" className="bg-gray-50 py-12 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-800 mb-1">✈ Experiencias de Diana</h2>
           <p className="text-gray-500 text-sm mb-6">Destinos que he visitado y te recomiendo con el corazón</p>
@@ -69,10 +143,7 @@ export default function Home() {
         </div>
       </section>
 
-{/* PROMOCIONES */}
-      <Promociones />
-            
-      {/* NAV */}
+      {/* NAV STICKY */}
       <nav className="sticky top-0 bg-white border-b border-gray-100 z-10">
         <div className="max-w-4xl mx-auto flex gap-6 justify-center py-3 text-sm text-gray-500">
           <a href="#destinos" className="hover:text-red-600 transition">Destinos</a>
@@ -86,24 +157,8 @@ export default function Home() {
       <section id="destinos" className="max-w-4xl mx-auto px-6 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-1">Destinos disponibles</h2>
         <p className="text-gray-500 text-sm mb-6">Colombia y el mundo, al mejor precio</p>
-
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Colombia</p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-          {destinos.filter(d => d.tipo === "nacional").map((d) => (
-            <Link href={`/destinos/${d.slug}`} key={d.nombre}>
-              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
-                <div className="relative h-24 w-full">
-                  <Image src={d.img} alt={d.nombre} fill className="object-cover" />
-                </div>
-                <p className="text-center text-sm font-medium py-2 text-gray-700">{d.nombre}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Internacional</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {destinos.filter(d => d.tipo === "internacional").map((d) => (
+          {destinos.map((d) => (
             <Link href={`/destinos/${d.slug}`} key={d.nombre}>
               <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition cursor-pointer">
                 <div className="relative h-24 w-full">
@@ -136,6 +191,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* PROMOCIONES */}
+      <div id="promociones">
+        <Promociones />
+      </div>
 
       {/* ASESORA */}
       <section id="asesora" className="max-w-4xl mx-auto px-6 py-12">
@@ -172,8 +232,15 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="text-center text-xs text-gray-400 py-6 border-t border-gray-100">
-        © 2025 · Diana Ramírez Losada · Asesora autorizada On Vacation · Cali, Colombia
+      <footer className="bg-[#0a1628] text-white text-center py-6 px-6">
+        <p className="text-yellow-400 font-bold italic text-lg mb-1">Diana Travel ✈</p>
+        <p className="text-gray-400 text-xs mb-3">Asesora Oficial On Vacation · Cali, Colombia</p>
+        <div className="flex justify-center gap-4 mb-3">
+          <a href="https://www.facebook.com/diana_asesora_on_vacation" target="_blank" className="text-gray-400 hover:text-yellow-400 transition text-sm">Facebook</a>
+          <a href="https://www.instagram.com/diana_asesora_on_vacation" target="_blank" className="text-gray-400 hover:text-yellow-400 transition text-sm">Instagram</a>
+          <a href="https://www.tiktok.com/@diana_asesora_on_vacation" target="_blank" className="text-gray-400 hover:text-yellow-400 transition text-sm">TikTok</a>
+        </div>
+        <p className="text-gray-600 text-xs">© 2025 · diana.travel · Todos los derechos reservados</p>
       </footer>
 
     </main>

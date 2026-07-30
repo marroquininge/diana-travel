@@ -121,7 +121,7 @@ export default function Home() {
       <section id="asesora" className="max-w-4xl mx-auto px-6 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Tu asesora</h2>
         <div className="rounded-2xl overflow-hidden shadow-md mb-4">
-          <Image src="/images/flayer_diana.jpeg" alt="Diana Ramírez - Asesora On Vacation" width={1200} height={1600} className="w-full h-auto" />
+          <Image src="/images/presentacion_diana.png" alt="Diana Ramírez - Asesora On Vacation" width={1200} height={1600} className="w-full h-auto" />
         </div>
         <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 flex gap-5 items-center">
           <div className="flex-shrink-0">
